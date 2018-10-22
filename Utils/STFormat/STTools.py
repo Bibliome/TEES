@@ -204,6 +204,7 @@ class Document:
     def loadText(self, filename):
         f = codecs.open(filename, "rt", "utf-8")
         self.text = f.read()
+        self.text = self.text.replace(u"\xa0"," ") # added to replace "\xa0" characters that appear in some text because of the encoding
         f.close()
 
     def save(self, dir, resultFileTag="a2", debug=False, writeExtra=False, files=["txt", "a1", "a2", "rel"]):
